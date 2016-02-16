@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "nageraser"
+
+r = Nageraser::Reporter.new
+
+f = Nageraser::Formatter.new(r.report_month(06, 2015), 'nucleoid')
+f.build

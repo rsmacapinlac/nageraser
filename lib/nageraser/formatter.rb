@@ -13,7 +13,7 @@ module Nageraser
       @_unaccounted_activities = []
 
       init_config_file
-      puts @config_data[job]
+      # puts @config_data[job]
 
     end
 
@@ -39,12 +39,26 @@ module Nageraser
           @_unaccounted_activities << activity
         end
       end
-      puts @_unaccounted_activities
+
+      # convert seconds spent to hourly
+      @_data_count.keys.each do |_date|
+        @_data_count[_date].keys.each do |_role|
+          seconds_spent = @_data_count[_date][_role]
+          @_data_count[_date][_role] = ((seconds_spent / 60).to_f / 60).to_f
+        end
+      end
+
     end
 
-    def build
-      puts @_data
+    def format
+      @_data_count.keys.each do |_date|
+        puts "#{_date}: #{@_data_count[_date]}"
+      end
+    end
+
+    def count_and_format
       count
+      format
     end
 
     private

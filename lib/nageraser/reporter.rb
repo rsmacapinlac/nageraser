@@ -9,8 +9,8 @@ module Nageraser
     def initialize(api_key = nil, options = {})
       _api_key = load_key(api_key)
       @_rr_client = Rescuetime::Client.new(api_key: _api_key)
-      puts "api_key? #{@_rr_client.api_key?}"
-      puts "valid_credentials? #{@_rr_client.valid_credentials?}"
+      # puts "api_key? #{@_rr_client.api_key?}"
+      # puts "valid_credentials? #{@_rr_client.valid_credentials?}"
     end
 
     def report_month(month, year)

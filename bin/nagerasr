@@ -2,8 +2,26 @@
 
 require "bundler/setup"
 require "nageraser"
+require 'optparse'
 
-r = Nageraser::Reporter.new
+options = {}
+optp = OptionParser.new do |opts|
+  opts.banner = "Usage: nagerasr job month year [options]"
 
-f = Nageraser::Formatter.new(r.report_month(06, 2015), 'nucleoid')
-f.build
+  opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
+    options[:verbose] = v
+  end
+end
+optp.parse!
+
+if ARGV.size != 3
+  puts optp.banner
+else
+  _job    = ARGV[0]
+  _month  = ARGV[1]
+  _year   = ARGV[2]
+
+  r = Nageraser::Reporter.new
+  f = Nageraser::Formatter.new(r.report_month(_month, _year), _job)
+  f.count_and_format
+end

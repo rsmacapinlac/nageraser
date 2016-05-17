@@ -1,6 +1,12 @@
 # Nageraser
 
-  This is a compiler of timesheet information so that I stopped getting nagged on timesheets.
+  This is a compiler of timesheet information so that I stopped getting nagged
+on timesheets.
+
+  I use RescueTime to automatically track what I do on various devices /
+computers. I needed a way to consolidate some of tasks into projects (ie. When
+I'm working on Prompt on iOS, then it is most likely that I'm writing code for
+Project A).
 
 ## Usage
 
@@ -13,6 +19,9 @@ nagerasr 'job' <startrange> <endrange>
 ```
 
 ## Config File
+
+You'll need a YAML config file that relates jobs, into roles / categories to the
+activities from RescueTime.
 
 ```
 this_is_jobs:
